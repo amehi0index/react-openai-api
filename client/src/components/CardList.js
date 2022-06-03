@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card'
 import { v4 as uuidv4 } from 'uuid'
 
-const CardList = ({ savedResults }) => {
+const CardList = ({ results }) => {
 
   const reverseArray = (array) => {
     let output = []
@@ -10,7 +10,7 @@ const CardList = ({ savedResults }) => {
     return output
   }
 
-  const reversedResults = reverseArray(savedResults)
+  const reversedResults = reverseArray(results)
 
   return (
     <div className="card-list">
