@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 
 const Alert = ({ showAlert, setShowAlert }) => {
+  
     useEffect(() => {
         let timeout
         if (showAlert) {

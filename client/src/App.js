@@ -13,7 +13,7 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem("results", JSON.stringify(results));
-  }, [results]);
+  }, [results])
 
   const capitilizeInput = (string) => {
     const strToArray = string.split(",").map(item => item.trim())
