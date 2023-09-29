@@ -16,7 +16,6 @@ app.use(express.static('client'))
 app.use('/api/generate', require('./routes/generate'))
 
 //SERVE STATIC ASSETS IN PRODUCTION?
-//SERVE STATIC ASSETS IN PRODUCTION?
 if(process.env.NODE_ENV === 'production'){
 
     app.use(express.static(path.join(__dirname,'client/build')))

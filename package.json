@@ -1,6 +1,9 @@
 {
   "name": "react-openai-api",
   "version": "1.0.0",
+  "engines": {
+    "node": "18.x"
+  },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "scripts": {
