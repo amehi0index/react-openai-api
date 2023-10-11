@@ -9,6 +9,9 @@ const App = () => {
   const [results, setResults] = useLocalStorage("results", [])
   const [showAlert, setShowAlert] = useState(false)
 
+  const [consent, setConsent] = useState(false)
+  const [dbInput, setDbInput] = useState([])
+
   const capitilizeInput = (string) => {
     const strToArray = string.split(",").map(item => item.trim())
     const capitalizedFirstLetters = strToArray.map(el => {
@@ -21,6 +24,8 @@ const App = () => {
   const onSubmit = async (e) => {
     e.preventDefault()
 
+    console.log('I submit')
+
     let strToArray = []
     strToArray = ingredientInput.split(",")
 
@@ -29,18 +34,25 @@ const App = () => {
       setShowAlert(true)
     }else{ 
 
-      const response = await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    const response = await fetch("/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
         body: JSON.stringify({ ingredient: ingredientInput }),
       })
 
       const data = await response.json()
       setIngredientInput("")
       setResults([...results, { ingredientPrompt: capitilizeInput(ingredientInput), nameResult: data.result }])
+
+      //if consent
+      setDbInput([...dbInput, {ingredients: ingredientInput, suggestedNames: data.result}])
     }
+
+
+    //POST dbInput to DB
+
   }
 
   const clearAll = () => {
@@ -68,7 +80,7 @@ const App = () => {
         </form>
 
         <Alert showAlert={showAlert} setShowAlert={setShowAlert} /> 
-        <CardList results={results} />
+        <CardList results={results} setConsent={setConsent} />
     
       </main>
       {results.length > 0 &&  <button className="clear-btn" onClick={clearAll}>Clear All</button>}

@@ -1,6 +1,11 @@
 import React from 'react'
 
-const Card = ({ prompt, response }) => {
+const Card = ({ prompt, response, setConsent }) => {
+
+  const handleConsent = () => {
+    console.log('I consent to be saved@')
+  }
+
   return (
     <div className="card">
       <div className="prompt">
@@ -8,6 +13,7 @@ const Card = ({ prompt, response }) => {
       </div>
       <div className="response">
         <h3>Fancy Hot Sauce Name:<span>{response}</span></h3>
+        <button onClick={()=>handleConsent}><i className="fa-solid fa-fire"></i> </button>
       </div>
     </div>
   )

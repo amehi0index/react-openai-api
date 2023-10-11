@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card'
 import { v4 as uuidv4 } from 'uuid'
 
-const CardList = ({ results }) => {
+const CardList = ({ results, setConsent }) => {
 
   const reverseArray = (array) => {
     let output = []
@@ -15,7 +15,7 @@ const CardList = ({ results }) => {
   return (
     <div className="card-list">
       {reversedResults && reversedResults.map(r => (
-        <Card key={uuidv4()} prompt={r.ingredientPrompt} response={r.nameResult}/>
+        <Card key={uuidv4()} prompt={r.ingredientPrompt} response={r.nameResult} setConsent={setConsent}/>
       ))}
     </div>
   )
